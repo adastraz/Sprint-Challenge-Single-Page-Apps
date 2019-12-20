@@ -27,6 +27,8 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ]  Explain benefit(s) using `client-side routing`?
 
+Client-side routing is benificial to the user in numerous ways including fast page movement, while although it may take awhile for the page to initally run, once in the page there will be no trouble navigating throughout the page with speed as no refreshes are called from the 'client' (server?). 
+
 > Answer:
 
 ## Project Set Up

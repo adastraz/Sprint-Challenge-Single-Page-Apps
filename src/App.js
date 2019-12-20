@@ -7,6 +7,7 @@ import SearchForm from './components/SearchForm'
 import styled from 'styled-components'
 import WelcomePage from './components/WelcomePage'
 import LocationList from './components/LocationsList'
+import EpisodeList from './components/EpisodeList'
 
 const LookNice = styled.div`
 display:flex;
@@ -18,6 +19,7 @@ const App = () => {
   const [search, setSearch] = useState('')
   const [people, setNames] = useState([])
   const [place, setLocations] = useState([])
+  const [episode, setEpisodes] = useState([])
 
   function handleChanges(e) {
     e.preventDefault()
@@ -34,16 +36,27 @@ const App = () => {
     })
 },[search])
 
-useEffect (() => {
-  axios.get('https://rickandmortyapi.com/api/location/')
-    .then(res => {
-      console.log(res)
-      let locations = res.data.results.filter(char => 
-        char.name.toLowerCase().includes(search.toLowerCase())
-      )
-      setLocations(locations)
-  })
-},[search]) 
+  useEffect (() => {
+    axios.get('https://rickandmortyapi.com/api/location/')
+      .then(res => {
+        console.log(res)
+        let locations = res.data.results.filter(char => 
+          char.name.toLowerCase().includes(search.toLowerCase())
+        )
+        setLocations(locations)
+    })
+  },[search]) 
+
+  useEffect (() => {
+    axios.get('https://rickandmortyapi.com/api/episode/')
+      .then(res => {
+        console.log(res)
+        let episodes = res.data.results.filter(char => 
+          char.name.toLowerCase().includes(search.toLowerCase())
+        )
+        setEpisodes(episodes)
+    })
+  },[search])
 
   return (
     <main>
@@ -68,6 +81,7 @@ useEffect (() => {
           </LookNice>
           <CharacterList people={people}/>
           <LocationList place={place} />
+          <EpisodeList episode={episode} />
         </Route>
         <Route path='/'>
           <Header />

@@ -23,7 +23,8 @@ const CharacterCard = (props) => {
     <SectionCSS>
       <Head>{props.people.name}</Head>
       <img src={props.people.image} />
-
+      <h4>Status : {props.people.status}</h4>
+      <h4>Species : {props.people.species}</h4>
     </SectionCSS>
   )
 }

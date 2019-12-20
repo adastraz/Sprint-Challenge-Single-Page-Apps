@@ -20,15 +20,15 @@ font-weight:bold;
 text-align: center;
 font-size:2rem;
 `
-const LocationCard = (props) => {
+const EpisodeCard = (props) => {
   console.log(props)
   return (
     <SectionCSS>
-      <Head>Location : {props.place.name}</Head>
-      <h4>Place : {props.place.type}</h4>
-      <h4>Dimension : {props.place.dimension}</h4>
+      <Head>Episode : {props.episode.name}</Head>
+      <h4>Air Date : {props.episode.air_date}</h4>
+      <h4>Episode : {props.episode.episode}</h4>
     </SectionCSS>
   )
 }
 
-export default LocationCard
+export default EpisodeCard
