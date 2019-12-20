@@ -1,5 +1,5 @@
 import React from "react";
-import LocationCard from './LocationCard'
+import EpisodeCard from './EpisodeCard'
 import styled from 'styled-components'
 
 const CSS = styled.section`
@@ -11,17 +11,17 @@ background:skyblue;
 width: 100%;
 `
 
-const LocationList = (props) => {
+const EpisodeList = (props) => {
   console.log(props)
   return (
     <section className="character-list">
     
       {
-        props.place.map((x,i) => {
+        props.episode.map((x,i) => {
           return(
             <CSS>
-              <LocationCard 
-                place={x} 
+              <EpisodeCard 
+                episode={x} 
                 key={i}
               />
             </CSS>
@@ -33,4 +33,4 @@ const LocationList = (props) => {
   );
 }
 
-export default LocationList
+export default EpisodeList
