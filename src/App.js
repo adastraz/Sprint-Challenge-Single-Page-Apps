@@ -6,6 +6,7 @@ import {Link, Route, Switch} from 'react-router-dom'
 import SearchForm from './components/SearchForm'
 import styled from 'styled-components'
 import WelcomePage from './components/WelcomePage'
+import LocationList from './components/LocationsList'
 
 const LookNice = styled.div`
 display:flex;
@@ -16,6 +17,7 @@ margin:3% 0;
 const App = () => {
   const [search, setSearch] = useState('')
   const [people, setNames] = useState([])
+  const [place, setLocations] = useState([])
 
   function handleChanges(e) {
     e.preventDefault()
@@ -31,6 +33,17 @@ const App = () => {
         setNames(characters)
     })
 },[search])
+
+useEffect (() => {
+  axios.get('https://rickandmortyapi.com/api/location/')
+    .then(res => {
+      console.log(res)
+      let locations = res.data.results.filter(char => 
+        char.name.toLowerCase().includes(search.toLowerCase())
+      )
+      setLocations(locations)
+  })
+},[search]) 
 
   return (
     <main>
@@ -54,6 +67,7 @@ const App = () => {
             />
           </LookNice>
           <CharacterList people={people}/>
+          <LocationList place={place} />
         </Route>
         <Route path='/'>
           <Header />
